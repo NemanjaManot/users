@@ -1,6 +1,8 @@
 import React from "react";
 import User from './User';
 
+import UserService from './UserService';
+
 export class Home extends React.Component {
 
     constructor(){
@@ -10,7 +12,7 @@ export class Home extends React.Component {
             searchValue: '',
             searchType: 'name'
         };
-        this.onClickHandler = this.onClickHandler.bind(this);
+        this.addNewUser = this.addNewUser.bind(this);
         this.removeUser = this.removeUser.bind(this);
         this.updateUser = this.updateUser.bind(this);
 
@@ -23,53 +25,26 @@ export class Home extends React.Component {
 
     /*  */
     componentDidMount(){
-        this.setState({
-            users: [
-                {
-                    id: 1,
-                    name: "Miki",
-                    lastName: "Anic",
-                    age: 25
-                },
-                {
-                    id: 2,
-                    name: "Ana",
-                    lastName: "Mikic",
-                    age: 33
-                },
-                {
-                    id: 3,
-                    name: "Pera",
-                    lastName: "Lukic",
-                    age: 28
-                }
-            ],
-            lastId: 3
-        })
+        UserService.getAllUsers().then(response => {
+            this.setState({
+                users: response.data
+            });
+        });
     }
 
     /* ADD USER BUTTON */
-    onClickHandler() {
+    addNewUser() {
         let newUser = {
             name: this.capitalize(this.state.newUserName),
             lastName: this.capitalize(this.state.newLastName),
-            age: this.state.newUserAge,
-            id: this.getNewUserId()
+            age: this.state.newUserAge
         };
-        this.state.users.push(newUser);
-
-        this.setState({
-            users: this.state.users
+        UserService.addNewUser(newUser).then(response => {
+            const addedUser = response.data;
+            this.setState({
+                users: this.state.users.push(addedUser)
+            });
         });
-    }
-
-    /* New user ID generate */
-    getNewUserId(){
-        let lastId = this.state.lastId+1;
-        this.setState({
-            lastId
-        });
-        return lastId;
     }
 
     /* ADD INPUT USER (for all inputs) */
@@ -84,23 +59,21 @@ export class Home extends React.Component {
         let newState = this.state.users.filter((index) => {
             return index.id !==id;
         });
+        UserService.deleteUser(id);
         /* updateovan state posle remove-a korisnika */
         this.setState({
             users: newState
         });
     }
 
-    updateUser(updatedUser, id){
-        this.state.users.forEach((user) => {
-            if (user.id === id) {
-                user.name = this.capitalize(updatedUser.name);
-                user.lastName = this.capitalize(updatedUser.lastName);
-                user.age = updatedUser.age;
+    updateUser(updatedData){
+        this.setState(state => {
+            for(let i = 0; i < state.users.length; i++){
+                if(state.users[i].id === updatedData.id){
+                    state.users[i] = updatedData;
+                }
             }
         });
-        this.setState({
-            users: this.state.users
-        })
     }
 
     /* Sort by name */
@@ -225,7 +198,7 @@ export class Home extends React.Component {
                     </div>
                     <div className="form-group">
                         <div className="col-sm-offset-2 col-sm-10">
-                            <button type="submit" className="btn btn-default" onClick={this.onClickHandler}>
+                            <button type="submit" className="btn btn-default" onClick={this.addNewUser}>
                                 Add
                             </button>
                         </div>

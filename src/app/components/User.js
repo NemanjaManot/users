@@ -1,4 +1,5 @@
 import React from "react";
+import UserService from './UserService';
 
  class User extends React.Component {
 
@@ -28,17 +29,19 @@ import React from "react";
 
 
      /* SAVE BUTTON */
-     saveUser(){
+     saveEditedUser(){
          const updatedUser = {
+             id: this.props.id,
              name: this.state.newName,
              lastName: this.state.newLastName,
              age: this.state.newAge
          };
-         this.props.updateUser(updatedUser, this.props.id);
-
-         this.setState({
-             editing: false
-         })
+         UserService.updateUser(updatedUser).then(response => {
+             this.props.updateUser(response.data);
+             this.setState({
+                 editing: false
+             })
+         });
      }
 
      onChangeInput(inputName, e){
@@ -107,7 +110,7 @@ import React from "react";
 
                  <td>
                      <button
-                         onClick={this.saveUser.bind(this)}
+                         onClick={this.saveEditedUser.bind(this)}
                          className="btn btn-success btn-xs" >
                          Save
                      </button>
