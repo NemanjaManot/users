@@ -60,7 +60,7 @@ import React from "react";
                          onClick={this.editUserName.bind(this)}
                          className="btn btn-default btn-xs"
                      >
-                         EDITt
+                         EDIT
                      </button>
                  </td>
                  <td>
