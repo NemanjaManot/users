@@ -27,7 +27,6 @@ import UserService from './UserService';
      }
 
 
-
      /* SAVE BUTTON */
      saveEditedUser(){
          const updatedUser = {
