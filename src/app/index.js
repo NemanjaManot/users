@@ -2,8 +2,8 @@ import React from 'react';
 import { render } from 'react-dom';
 import {Router, Route, browserHistory, IndexRoute} from "react-router";
 
-import { Root } from "./Pages/Root";
-import { Home } from "./components/Home";
+import { Root } from "./components/Root";
+import { Home } from "./Pages/Home";
 import { Profile } from "./Pages/Profile";
 
 class App extends React.Component {

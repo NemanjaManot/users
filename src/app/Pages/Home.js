@@ -1,7 +1,7 @@
 import React from "react";
-import User from './User';
+import User from '../components/User';
 
-import UserService from './UserService';
+import UserService from '../components/UserService';
 
 export class Home extends React.Component {
 
