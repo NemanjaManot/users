@@ -4,7 +4,7 @@ import {Router, Route, browserHistory, IndexRoute} from "react-router";
 
 import { Root } from "./components/Root";
 import { Home } from "./Pages/Home";
-import { Profile } from "./Pages/Profile";
+import { Books } from "./Pages/Books";
 
 class App extends React.Component {
 
