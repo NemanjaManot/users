@@ -1,13 +1,24 @@
 import React from "react";
+import {Link} from "react-router"
 
 export const Header = (props) => {
+
+    const ACTIVE = { background: '#286090', color: 'white'}
+
     return (
         <nav className="navbar-default">
             <ul className="nav nav-pills">
                 <li className="navbar-brand"> LIST OF USERS </li>
                 <div className="pull-right nav nav-pills">
-                    <li role="presentation"><a href="#">HOME</a></li>
-                    <li role="presentation"><a href="#">PROFILE</a></li>
+
+                    <li role="presentation">
+                        <Link to={"/home"} activeStyle={ACTIVE} >HOME</Link>
+                    </li>
+
+                    <li role="presentation">
+                        <Link to={"/profile"} activeStyle={ACTIVE} >PROFILE</Link>
+                    </li>
+
                 </div>
             </ul>
         </nav>
