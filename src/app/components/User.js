@@ -1,7 +1,7 @@
 import React from "react";
 import UserService from './UserService';
 
- class User extends React.Component {
+class User extends React.Component {
 
      constructor(){
          super();
@@ -31,8 +31,8 @@ import UserService from './UserService';
      saveEditedUser(){
          const updatedUser = {
              id: this.props.id,
-             name: this.state.newName,
-             lastName: this.state.newLastName,
+             name: this.capitalize(this.state.newName),
+             lastName: this.capitalize(this.state.newLastName),
              age: this.state.newAge
          };
          UserService.updateUser(updatedUser).then(response => {
@@ -47,6 +47,11 @@ import UserService from './UserService';
          let stateObj = {};
          stateObj[inputName] = e.target.value;
          this.setState(stateObj);
+     }
+
+     /* Capitalize first letter */
+     capitalize(string) {
+         return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase();
      }
 
 

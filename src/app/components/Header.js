@@ -16,7 +16,7 @@ export const Header = (props) => {
                     </li>
 
                     <li role="presentation">
-                        <Link to={"/profile"} activeStyle={activePage} >PROFILE</Link>
+                        <Link to={"/books"} activeStyle={activePage} >BOOKS</Link>
                     </li>
 
                 </div>

@@ -14,7 +14,7 @@ class App extends React.Component {
                 <Route path={"/"} component={Root}>
                     <IndexRoute component={Home} />
                     <Route path={"home"} component={Home} />
-                    <Route path={"profile"} component={Profile} />
+                    <Route path={"books"} component={Books} />
                 </Route>
             </Router>
          );
