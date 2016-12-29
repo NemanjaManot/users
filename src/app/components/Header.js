@@ -2,12 +2,14 @@ import React from "react";
 
 export const Header = (props) => {
     return (
-        <nav className="navbar navbar-default">
-            <div className="container">
-                <div className="navbar-header">
-                    <h3>LIST OF USERS</h3>
+        <nav className="navbar-default">
+            <ul className="nav nav-pills">
+                <li className="navbar-brand"> LIST OF USERS </li>
+                <div className="pull-right nav nav-pills">
+                    <li role="presentation"><a href="#">HOME</a></li>
+                    <li role="presentation"><a href="#">PROFILE</a></li>
                 </div>
-            </div>
+            </ul>
         </nav>
     );
 }

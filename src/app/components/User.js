@@ -60,7 +60,7 @@ import UserService from './UserService';
                  <td>
                      <button
                          onClick={this.editUserName.bind(this)}
-                         className="btn btn-default btn-xs"
+                         className="btn btn-primary btn-xs"
                      >
                          EDIT
                      </button>

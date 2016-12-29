@@ -198,7 +198,7 @@ export class Home extends React.Component {
                     </div>
                     <div className="form-group">
                         <div className="col-sm-offset-2 col-sm-10">
-                            <button type="submit" className="btn btn-default" onClick={this.addNewUser}>
+                            <button type="submit" className="btn btn-primary" onClick={this.addNewUser}>
                                 Add
                             </button>
                         </div>
@@ -213,6 +213,7 @@ export class Home extends React.Component {
                         <div className="form-group">
                             <label htmlFor="selectSearch">Search by (select one):</label>
                             <select
+                                className="btn btn-primary"
                                 style={buttonSort}
                                 id="selectSearch"
                                 onChange={this.updateSelectSearch.bind(this)}
@@ -238,7 +239,7 @@ export class Home extends React.Component {
                             <th>
                                 First Name
                                 <button
-                                    className="glyphicon glyphicon-sort btn btn-default btn-xs"
+                                    className="btn btn-default glyphicon glyphicon-sort btn btn-default btn-xs"
                                     style={buttonSort}
                                     onClick={this.sortByName.bind(this)}>
                                 </button>
@@ -246,7 +247,7 @@ export class Home extends React.Component {
                             <th>
                                 Last Name
                                 <button
-                                    className="glyphicon glyphicon-sort btn btn-default btn-xs"
+                                    className="btn btn-default glyphicon glyphicon-sort btn btn-default btn-xs"
                                     style={buttonSort}
                                     onClick={this.sortByLastName.bind(this)}>
                                 </button>
@@ -254,7 +255,7 @@ export class Home extends React.Component {
                             <th>
                                 Age
                                 <button
-                                    className="glyphicon glyphicon-sort btn btn-default btn-xs"
+                                    className="btn btn-default glyphicon glyphicon-sort btn btn-default btn-xs"
                                     style={buttonSort}
                                     onClick={this.sortByAge.bind(this)}>
                                 </button>
