@@ -41,8 +41,8 @@ export class Home extends React.Component {
         };
         UserService.addNewUser(newUser).then(response => {
             const addedUser = response.data;
-            this.setState({
-                users: this.state.users.push(addedUser)
+            this.setState(state => {
+                state.users.push(addedUser)
             });
         });
     }

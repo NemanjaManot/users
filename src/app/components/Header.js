@@ -3,7 +3,7 @@ import {Link} from "react-router"
 
 export const Header = (props) => {
 
-    const ACTIVE = { background: '#286090', color: 'white'}
+    const activePage = { background: '#286090', color: 'white'}
 
     return (
         <nav className="navbar-default">
@@ -12,11 +12,11 @@ export const Header = (props) => {
                 <div className="pull-right nav nav-pills">
 
                     <li role="presentation">
-                        <Link to={"/home"} activeStyle={ACTIVE} >HOME</Link>
+                        <Link to={"/home"} activeStyle={activePage} >HOME</Link>
                     </li>
 
                     <li role="presentation">
-                        <Link to={"/profile"} activeStyle={ACTIVE} >PROFILE</Link>
+                        <Link to={"/profile"} activeStyle={activePage} >PROFILE</Link>
                     </li>
 
                 </div>
