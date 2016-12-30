@@ -2,4 +2,6 @@
 
 npm install
 
-npm start.
+npm start
+
+-- work in progress --

@@ -20,7 +20,7 @@ class User extends React.Component {
      }
 
      /* EDIT BUTTON */
-     editUserName(){
+     editUsers(){
          this.setState({
              editing: true
          })
@@ -64,7 +64,7 @@ class User extends React.Component {
                  <td>{this.props.age}</td>
                  <td>
                      <button
-                         onClick={this.editUserName.bind(this)}
+                         onClick={this.editUsers.bind(this)}
                          className="btn btn-primary btn-xs"
                      >
                          EDIT

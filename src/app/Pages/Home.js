@@ -77,15 +77,6 @@ export class Home extends React.Component {
     }
 
     /* Sort by name */
-
-    // sortingAll(sorting){
-    //     let stateObj = {};
-    //     stateObj[sorting] = this.state.users.sort((a, b) => {
-    //         return a.name > b.name;
-    //     });
-    //     this.setState(stateObj);
-    // }
-
     sortByName(){
        let getSortName = this.state.users.sort((a, b) => {
             return a.name > b.name;
@@ -213,7 +204,7 @@ export class Home extends React.Component {
                         <div className="form-group">
                             <label htmlFor="selectSearch">Search by (select one):</label>
                             <select
-                                className="btn btn-primary"
+                                className="btn btn-default"
                                 style={buttonSort}
                                 id="selectSearch"
                                 onChange={this.updateSelectSearch.bind(this)}

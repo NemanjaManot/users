@@ -3,7 +3,7 @@ import {Link} from "react-router"
 
 export const Header = (props) => {
 
-    const activePage = { background: '#286090', color: 'white'}
+    const activePage = { background: '#286090', color: 'white'};
 
     return (
         <nav className="navbar-default">
@@ -23,5 +23,5 @@ export const Header = (props) => {
             </ul>
         </nav>
     );
-}
+};
 
