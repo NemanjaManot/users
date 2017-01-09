@@ -1,13 +1,18 @@
 import React from "react";
 import BookForm from '../components/BookForm';
 
+import BookService from '../components/BookService';
+import UserService from '../components/UserService';
+
+
 
 export class Books extends React.Component{
 
     constructor(){
         super();
         this.state = {
-            books: []
+            books: [],
+            users: []
         };
         this.addNewBook = this.addNewBook.bind(this);
         this.updateBook = this.updateBook.bind(this);
@@ -15,23 +20,18 @@ export class Books extends React.Component{
     }
 
     componentDidMount(){
-        this.setState({
-            books: [
-                {
-                    id: 1,
-                    title: "Some book",
-                    publisher: "Vulkan",
-                    year: 2008
-                },
-                {
-                    id: 2,
-                    title: "Very gooood book",
-                    publisher: "CET",
-                    year: 2010
-                }
-            ],
-            lastId: 2
-        })
+        BookService.getAllBooks().then(response => {
+            this.setState({
+                books: response.data
+            });
+        });
+
+        UserService.getAllUsers().then(response => {
+            this.setState({
+                users: response.data
+            });
+        });
+
     }
 
     /* Capitalize first letter */
@@ -44,13 +44,13 @@ export class Books extends React.Component{
         let newBook = {
             title: this.capitalize(this.state.newBookTitle),
             publisher: this.capitalize(this.state.newBookPublisher),
-            year: this.state.newBookYear,
-            id: this.getNewUserId()
+            year: this.state.newBookYear
         };
-        this.state.users.push(newBook);
-
-        this.setState({
-            users: this.state.users
+        BookService.addNewBook(newBook).then(response => {
+            const addedBook = response.data;
+            this.setState(state => {
+                state.books.push(addedBook)
+            });
         });
     }
 
@@ -61,27 +61,16 @@ export class Books extends React.Component{
         this.setState(stateObj);
     }
 
-    /* New user ID generate */
-    getNewUserId(){
-        let lastId = this.state.lastId+1;
-        this.setState({
-            lastId
-        });
-        return lastId;
-    }
-
-    updateBook(updatedUser, id){
-        this.state.books.forEach((user) => {
-            if (user.id === id) {
-                user.title = this.capitalize(updatedUser.title);
-                user.publisher = this.capitalize(updatedUser.publisher);
-                user.year = updatedUser.year;
+    updateBook(updatedData){
+        this.setState(state => {
+            for(let i = 0; i < state.books.length; i++){
+                if(state.books[i].id === updatedData.id){
+                    state.books[i] = updatedData;
+                }
             }
         });
-        this.setState({
-            users: this.state.books
-        })
     }
+
 
 
     render(){
@@ -91,17 +80,22 @@ export class Books extends React.Component{
             marginLeft: 8
         };
 
-        let booksList = this.state.books.map((user) => {
+        let booksList = this.state.books.map((book, index) => {
             return (
                 <BookForm
-                    key={user.id}
-                    title={user.title}
-                    publisher={user.publisher}
-                    year={user.year}
-                    id={user.id}
+                    key={book.id}
+                    title={book.title}
+                    publisher={book.publisher}
+                    year={book.year}
+                    id={book.id}
                     updateBook={this.updateBook}
                 />
             )
+        });
+
+        /* Select user - Users from user-page */
+        const options = this.state.users.map((user, index) => {
+            return (<option key={index}> {user.name + ' ' + user.lastName} </option>);
         });
 
         return (
@@ -116,9 +110,7 @@ export class Books extends React.Component{
                                 className="btn btn-default"
                                 id="inputTitle"
                             >
-                                <option value="a">user1</option>
-                                <option value="b">user2</option>
-                                <option value="c">user3</option>
+                                { options }
                             </select>
                         </div>
                     </div>

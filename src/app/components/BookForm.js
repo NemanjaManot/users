@@ -1,4 +1,5 @@
 import React from "react";
+import BookService from './BookService';
 
 class BookForm extends React.Component {
 
@@ -28,16 +29,17 @@ class BookForm extends React.Component {
 
     /* SAVE BUTTON */
     saveBook(){
-        const updatedUser = {
+        const updatedBook = {
             title: this.state.newTitle,
             publisher: this.state.newPublisher,
             year: this.state.newYear
         };
-        this.props.updateBook(updatedUser, this.props.id);
-
-        this.setState({
-            editing: false
-        })
+        BookService.updateBook(updatedBook).then(response => {
+            this.props.updateBook(response.data);
+            this.setState({
+                editing: false
+            })
+        });
     }
 
     onChangeInput(inputName, e){
@@ -51,7 +53,7 @@ class BookForm extends React.Component {
     renderNormal(){
         return (
             <tr>
-                <td>User...</td>
+                <td></td>
                 <td>{this.props.title}</td>
                 <td>{this.props.publisher}</td>
                 <td>{this.props.year}</td>
