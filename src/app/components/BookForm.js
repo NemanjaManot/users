@@ -26,12 +26,18 @@ class BookForm extends React.Component {
         })
     }
 
+    /* Capitalize first letter */
+    capitalize(string) {
+        return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase();
+    }
 
     /* SAVE BUTTON */
     saveBook(){
         const updatedBook = {
-            title: this.state.newTitle,
-            publisher: this.state.newPublisher,
+            id: this.props.id,
+            userId: this.props.userId,
+            title: this.capitalize(this.state.newTitle),
+            publisher: this.capitalize(this.state.newPublisher),
             year: this.state.newYear
         };
         BookService.updateBook(updatedBook).then(response => {
@@ -51,15 +57,15 @@ class BookForm extends React.Component {
 
     /* Render normal */
     renderNormal(){
-        let name = '';
+        let userName = '';
         this.props.usersList.forEach(user => {
             if(user.id === this.props.userId){
-                name = user.name + " " + user.lastName;
+                userName = user.name + " " + user.lastName;
             }
         });
         return (
             <tr>
-                <td>{name}</td>
+                <td>{userName}</td>
                 <td>{this.props.title}</td>
                 <td>{this.props.publisher}</td>
                 <td>{this.props.year}</td>
@@ -85,11 +91,15 @@ class BookForm extends React.Component {
 
     /* Render form on EDIT click */
     renderForm(){
+        let userName = '';
+        this.props.usersList.forEach(user => {
+            if(user.id === this.props.userId){
+                userName = user.name + " " + user.lastName;
+            }
+        });
         return (
             <tr>
-                <td>
-                    User...
-                </td>
+                <td>{userName}</td>
                 <td>
                     <input
                         className="input xs"
