@@ -51,9 +51,15 @@ class BookForm extends React.Component {
 
     /* Render normal */
     renderNormal(){
+        let name = '';
+        this.props.usersList.forEach(user => {
+            if(user.id === this.props.userId){
+                name = user.name + " " + user.lastName;
+            }
+        });
         return (
             <tr>
-                <td></td>
+                <td>{name}</td>
                 <td>{this.props.title}</td>
                 <td>{this.props.publisher}</td>
                 <td>{this.props.year}</td>
@@ -63,6 +69,14 @@ class BookForm extends React.Component {
                         className="btn btn-primary btn-xs"
                     >
                         EDIT
+                    </button>
+                </td>
+                <td>
+                    <button
+                        className="btn btn-danger btn-xs "
+                        onClick={this.props.removeBook.bind(this, this.props.id)}
+                    >
+                        X
                     </button>
                 </td>
             </tr>
@@ -105,6 +119,14 @@ class BookForm extends React.Component {
                         onClick={this.saveBook.bind(this)}
                         className="btn btn-success btn-xs" >
                         Save
+                    </button>
+                </td>
+                <td>
+                    <button
+                        className="btn btn-danger btn-xs "
+                        onClick={this.props.removeBook.bind(this, this.props.id)}
+                    >
+                        X
                     </button>
                 </td>
             </tr>

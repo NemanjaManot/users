@@ -22,6 +22,12 @@ class BookService {
             data: updatedBook
         });
     }
+    deleteBook(id) {
+        return Axios({
+            method: 'delete',
+            url: url + '/' + id
+        });
+    }
 
 }
 

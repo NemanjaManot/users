@@ -16,7 +16,7 @@ export class Books extends React.Component{
         };
         this.addNewBook = this.addNewBook.bind(this);
         this.updateBook = this.updateBook.bind(this);
-
+        this.removeBook = this.removeBook.bind(this);
     }
 
     componentDidMount(){
@@ -41,10 +41,14 @@ export class Books extends React.Component{
 
         /* ADD new book input */
     addNewBook() {
+        let element = document.getElementById("inputTitle");
+        let elementValue = Number(element.value);
+
         let newBook = {
             title: this.capitalize(this.state.newBookTitle),
             publisher: this.capitalize(this.state.newBookPublisher),
-            year: this.state.newBookYear
+            year: this.state.newBookYear,
+            userId: elementValue
         };
         BookService.addNewBook(newBook).then(response => {
             const addedBook = response.data;
@@ -61,11 +65,23 @@ export class Books extends React.Component{
         this.setState(stateObj);
     }
 
-    updateBook(updatedData){
+
+    /* REMOVE */
+    removeBook(id){
+        let newState = this.state.books.filter((index) => {
+            return index.id !==id;
+        });
+        BookService.deleteBook(id);
+        this.setState({
+            users: newState
+        });
+    }
+
+    updateBook(updatedDataBook){
         this.setState(state => {
             for(let i = 0; i < state.books.length; i++){
-                if(state.books[i].id === updatedData.id){
-                    state.books[i] = updatedData;
+                if(state.books[i].id === updatedDataBook.id){
+                    state.books[i] = updatedDataBook;
                 }
             }
         });
@@ -73,12 +89,17 @@ export class Books extends React.Component{
 
 
 
-    render(){
 
+    render(){
         /* CSS */
         const buttonSort = {
             marginLeft: 8
         };
+
+        /* Select user - Users from user-page */
+        const options = this.state.users.map((user, index) => {
+            return (<option key={index} value={user.id}> {user.name + ' ' + user.lastName} </option>);
+        });
 
         let booksList = this.state.books.map((book, index) => {
             return (
@@ -88,15 +109,14 @@ export class Books extends React.Component{
                     publisher={book.publisher}
                     year={book.year}
                     id={book.id}
+                    userId={book.userId}
+                    removeBook={this.removeBook}
                     updateBook={this.updateBook}
+                    usersList={this.state.users}
                 />
             )
         });
 
-        /* Select user - Users from user-page */
-        const options = this.state.users.map((user, index) => {
-            return (<option key={index}> {user.name + ' ' + user.lastName} </option>);
-        });
 
         return (
             <div>
@@ -149,7 +169,7 @@ export class Books extends React.Component{
                                 type="number"
                                 className="form-control"
                                 id="inputYear"
-                                placeholder="Set your age"
+                                placeholder="Set year"
                             />
                         </div>
                     </div>
@@ -203,6 +223,7 @@ export class Books extends React.Component{
                                     </button>
                                 </th>
                                 <th>Edit</th>
+                                <th>Remove</th>
                             </tr>
                         </thead>
 

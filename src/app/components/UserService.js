@@ -1,6 +1,6 @@
 import Axios from 'axios';
 
-const url = 'http://interventure.getsandbox.com/users';
+const url = 'http://knjizara.getsandbox.com/users';
 class UserService {
     getAllUsers() {
         return Axios({
