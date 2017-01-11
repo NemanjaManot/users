@@ -11,7 +11,11 @@ export class Home extends React.Component {
         this.state = {
             users: [],
             searchValue: '',
-            searchType: 'name'
+            searchType: 'name',
+            activeSort: {
+                direction: 'desc',
+                column: ''
+            }
         };
         this.addNewUser = this.addNewUser.bind(this);
         this.removeUser = this.removeUser.bind(this);
@@ -77,26 +81,55 @@ export class Home extends React.Component {
         });
     }
 
+
+
     /* Sorting */
     sorting(thing){
+        let dir;
+        if(thing == this.state.activeSort.column) {
+            dir = this.state.activeSort.direction == 'asc' ? 'desc' : 'asc';
+        }
         let sorts = this.state.users.sort((a,b) => {
-            return a[thing] > b[thing]
+            if(dir == 'asc') {
+                return a[thing] < b[thing]
+            } else {
+                return a[thing] > b[thing]
+            }
         });
 
         this.setState({
-            users: sorts
+            users: sorts,
+            activeSort: {
+                column: thing,
+                direction: dir
+            }
         })
     }
 
     /* Sort by age */
     sortByAge(){
-        let getSortAge = this.state.users.sort((a, b) => {
-            return a.age - b.age;
+        let dir;
+        if('writerAge' == this.state.activeSort.column) {
+            dir = this.state.activeSort.direction == 'asc' ? 'desc' : 'asc';
+        }
+
+        let getSortYear = this.state.users.sort((a, b) => {
+            if(dir == 'asc') {
+                return a.age + b.age
+            } else {
+                return a.age - b.age
+            }
         });
+
         this.setState({
-            users: getSortAge
+            users: getSortYear,
+            activeSort: {
+                column: 'writerAge',
+                direction: dir
+            }
         })
     }
+
 
         /* input search */
     updateSearch(e){
@@ -110,6 +143,8 @@ export class Home extends React.Component {
             searchType: e.target.value
         })
     }
+
+
 
     render() {
         const filteredUsers = this.state.users.filter((user) => {

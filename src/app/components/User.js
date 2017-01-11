@@ -120,12 +120,7 @@ class User extends React.Component {
                      </button>
                  </td>
                  <td>
-                     <button
-                         className="btn btn-danger btn-xs "
-                         onClick={this.props.removeUser.bind(this, this.props.id)}
-                     >
-                         X
-                     </button>
+
                  </td>
              </tr>
 

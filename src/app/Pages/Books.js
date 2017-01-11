@@ -12,7 +12,11 @@ export class Books extends React.Component{
         super();
         this.state = {
             books: [],
-            users: []
+            users: [],
+            activeSort: {
+                direction: 'desc',
+                column: ''
+            }
         };
         this.addNewBook = this.addNewBook.bind(this);
         this.updateBook = this.updateBook.bind(this);
@@ -87,26 +91,84 @@ export class Books extends React.Component{
         });
     }
 
+
     /* Sorting */
     sorting(thing){
-        let books = this.state.books.sort((a,b) => {
-            return a[thing] > b[thing]
+        let dir;
+        if(thing == this.state.activeSort.column) {
+            dir = this.state.activeSort.direction == 'asc' ? 'desc' : 'asc';
+        }
+        let sorts = this.state.books.sort((a,b) => {
+            if(dir == 'asc') {
+                return a[thing] < b[thing]
+            } else {
+                return a[thing] > b[thing]
+            }
         });
+
         this.setState({
-            books: books
+            books: sorts,
+            activeSort: {
+                column: thing,
+                direction: dir
+            }
         })
     }
+
+
+    sortingOnlyUser(){
+        let dir;
+        if('writerName' == this.state.activeSort.column) {
+            dir = this.state.activeSort.direction == 'asc' ? 'desc' : 'asc';
+        }
+
+        let sortedUserBooks = this.state.books.sort((a, b) => {
+            const firstUser = this.state.users.find((user) => {
+                return a.userId == user.id
+            });
+            const secondUser = this.state.users.find((user) => {
+                return b.userId == user.id
+            });
+            if(dir == 'asc') {
+                return firstUser.name > secondUser.name;
+            } else {
+                return firstUser.name < secondUser.name;
+            }
+        });
+
+        this.setState({
+            books: sortedUserBooks,
+            activeSort: {
+                column: 'writerName',
+                direction: dir
+            }
+        })
+    }
+
 
     /* Sort by age */
     sortByYear(){
+        let dir;
+        if('writerAge' == this.state.activeSort.column) {
+            dir = this.state.activeSort.direction == 'asc' ? 'desc' : 'asc';
+        }
+
         let getSortYear = this.state.books.sort((a, b) => {
-            return a.year - b.year;
+            if(dir == 'asc') {
+                return a.year + b.year
+            } else {
+                return a.year - b.year
+            }
         });
+
         this.setState({
-            books: getSortYear
+            books: getSortYear,
+            activeSort: {
+                column: 'writerAge',
+                direction: dir
+            }
         })
     }
-
 
 
 
@@ -215,7 +277,7 @@ export class Books extends React.Component{
                                     <button
                                         className="btn btn-default glyphicon glyphicon-sort btn btn-default btn-xs"
                                         style={buttonSort}
-                                        //onClick={this.sorting.bind(this, 'name')}
+                                        onClick={this.sortingOnlyUser.bind(this)}
                                         >
                                     </button>
                                 </th>

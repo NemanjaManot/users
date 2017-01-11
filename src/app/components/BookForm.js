@@ -132,12 +132,7 @@ class BookForm extends React.Component {
                     </button>
                 </td>
                 <td>
-                    <button
-                        className="btn btn-danger btn-xs "
-                        onClick={this.props.removeBook.bind(this, this.props.id)}
-                    >
-                        X
-                    </button>
+
                 </td>
             </tr>
 
