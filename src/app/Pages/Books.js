@@ -73,7 +73,7 @@ export class Books extends React.Component{
         });
         BookService.deleteBook(id);
         this.setState({
-            users: newState
+            books: newState
         });
     }
 
@@ -85,6 +85,26 @@ export class Books extends React.Component{
                 }
             }
         });
+    }
+
+    /* Sorting */
+    sorting(thing){
+        let books = this.state.books.sort((a,b) => {
+            return a[thing] > b[thing]
+        });
+        this.setState({
+            books: books
+        })
+    }
+
+    /* Sort by age */
+    sortByYear(){
+        let getSortYear = this.state.books.sort((a, b) => {
+            return a.year - b.year;
+        });
+        this.setState({
+            books: getSortYear
+        })
     }
 
 
@@ -101,7 +121,7 @@ export class Books extends React.Component{
             return (<option key={index} value={user.id}> {user.name + ' ' + user.lastName} </option>);
         });
 
-        let booksList = this.state.books.map((book, index) => {
+        let booksList = this.state.books.map((book) => {
             return (
                 <BookForm
                     key={book.id}
@@ -195,6 +215,7 @@ export class Books extends React.Component{
                                     <button
                                         className="btn btn-default glyphicon glyphicon-sort btn btn-default btn-xs"
                                         style={buttonSort}
+                                        //onClick={this.sorting.bind(this, 'name')}
                                         >
                                     </button>
                                 </th>
@@ -203,6 +224,7 @@ export class Books extends React.Component{
                                     <button
                                         className="btn btn-default glyphicon glyphicon-sort btn btn-default btn-xs"
                                         style={buttonSort}
+                                        onClick={this.sorting.bind(this, 'title')}
                                     >
                                     </button>
                                 </th>
@@ -211,6 +233,7 @@ export class Books extends React.Component{
                                     <button
                                         className="btn btn-default glyphicon glyphicon-sort btn btn-default btn-xs"
                                         style={buttonSort}
+                                        onClick={this.sorting.bind(this, 'publisher')}
                                     >
                                     </button>
                                 </th>
@@ -219,6 +242,7 @@ export class Books extends React.Component{
                                     <button
                                         className="btn btn-default glyphicon glyphicon-sort btn btn-default btn-xs"
                                         style={buttonSort}
+                                        onClick={this.sortByYear.bind(this)}
                                     >
                                     </button>
                                 </th>

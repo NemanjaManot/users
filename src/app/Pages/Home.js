@@ -2,6 +2,7 @@ import React from "react";
 import User from '../components/User';
 
 import UserService from '../components/UserService';
+import BookService from '../components/BookService';
 
 export class Home extends React.Component {
 
@@ -76,34 +77,22 @@ export class Home extends React.Component {
         });
     }
 
-    /* Sort by name */
-    sortByName(){
-       let getSortName = this.state.users.sort((a, b) => {
-            return a.name > b.name;
-       });
-
-        this.setState({
-            users: getSortName
-        })
-    }
-
-    /* Sort by Last name */
-    sortByLastName(){
-        let getSortLast = this.state.users.sort((a, b) => {
-            return a.lastName > b.lastName;
+    /* Sorting */
+    sorting(thing){
+        let sorts = this.state.users.sort((a,b) => {
+            return a[thing] > b[thing]
         });
 
         this.setState({
-            users: getSortLast
+            users: sorts
         })
     }
 
     /* Sort by age */
     sortByAge(){
         let getSortAge = this.state.users.sort((a, b) => {
-            return a.age < b.age;
+            return a.age - b.age;
         });
-
         this.setState({
             users: getSortAge
         })
@@ -232,7 +221,7 @@ export class Home extends React.Component {
                                 <button
                                     className="btn btn-default glyphicon glyphicon-sort btn btn-default btn-xs"
                                     style={buttonSort}
-                                    onClick={this.sortByName.bind(this)}>
+                                    onClick={this.sorting.bind(this, 'name')}>
                                 </button>
                             </th>
                             <th>
@@ -240,7 +229,7 @@ export class Home extends React.Component {
                                 <button
                                     className="btn btn-default glyphicon glyphicon-sort btn btn-default btn-xs"
                                     style={buttonSort}
-                                    onClick={this.sortByLastName.bind(this)}>
+                                    onClick={this.sorting.bind(this, 'lastName')}>
                                 </button>
                             </th>
                             <th>
