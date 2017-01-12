@@ -71,11 +71,11 @@ export class Books extends React.Component{
 
 
     /* REMOVE */
-    removeBook(id){
+    removeBook(bookId){
         let newStateBook = this.state.books.filter((index) => {
-            return index.id !=id;
+            return index.id != bookId;
         });
-        BookService.deleteBook(id);
+        BookService.deleteBook(bookId);
         this.setState({
             books: newStateBook
         });

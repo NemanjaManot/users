@@ -67,16 +67,20 @@ export class Home extends React.Component {
     }
 
     /* REMOVE */
-    removeUser(id){
+    removeUser(userId){
         let message = confirm("If you delete user, you also delete user book(s)!");
         if (message == true) {
-            let newStateUser = this.state.users.filter((index) => {
-                return index.id !=id;
+            let newStateUser = this.state.users.filter((user) => {
+                return user.id != userId;
             });
 
+            this.state.books.forEach((book) => {
+                if(book.userId == userId){
+                    BookService.deleteBook(book.id);
+                }
+            });
 
-            BookService.deleteBook(id);
-            UserService.deleteUser(id);
+            UserService.deleteUser(userId);
             /* updateovan state posle remove-a korisnika */
             this.setState({
                 users: newStateUser
