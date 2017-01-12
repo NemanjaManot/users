@@ -56,10 +56,14 @@ class User extends React.Component {
 
      /* Render normal */
      renderNormal(){
+
+         let numberOfBooks = 1;
+
          return (
              <tr>
                  <td>{this.props.name}</td>
                  <td>{this.props.lastName}</td>
+                 <td>{numberOfBooks}</td>
                  <td>{this.props.age}</td>
                  <td>
                      <button
@@ -99,6 +103,15 @@ class User extends React.Component {
                          className="input xs"
                          type="text"
                          defaultValue={this.props.lastName}
+                         onChange={this.onChangeInput.bind(this, 'newLastName')}
+                     />
+                 </td>
+                 <td>
+                     <input
+                         className="input xs"
+                         type="text"
+                         id="inputNumberBook"
+                         defaultValue={this.props.numberBook}
                          onChange={this.onChangeInput.bind(this, 'newLastName')}
                      />
                  </td>

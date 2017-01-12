@@ -285,6 +285,14 @@ export class Home extends React.Component {
                                 </button>
                             </th>
                             <th>
+                                Books
+                                <button
+                                    className="btn btn-default glyphicon glyphicon-sort btn btn-default btn-xs"
+                                    style={buttonSort}
+                                    onClick={this.sortByAge.bind(this)}>
+                                </button>
+                            </th>
+                            <th>
                                 Age
                                 <button
                                     className="btn btn-default glyphicon glyphicon-sort btn btn-default btn-xs"
