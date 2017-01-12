@@ -72,19 +72,19 @@ export class Books extends React.Component{
 
     /* REMOVE */
     removeBook(id){
-        let newState = this.state.books.filter((index) => {
-            return index.id !==id;
+        let newStateBook = this.state.books.filter((index) => {
+            return index.id !=id;
         });
         BookService.deleteBook(id);
         this.setState({
-            books: newState
+            books: newStateBook
         });
     }
 
     updateBook(updatedDataBook){
         this.setState(state => {
             for(let i = 0; i < state.books.length; i++){
-                if(state.books[i].id === updatedDataBook.id){
+                if(state.books[i].id == updatedDataBook.id){
                     state.books[i] = updatedDataBook;
                 }
             }

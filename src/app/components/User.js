@@ -54,7 +54,6 @@ class User extends React.Component {
          return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase();
      }
 
-
      /* Render normal */
      renderNormal(){
          return (

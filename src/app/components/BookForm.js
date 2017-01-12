@@ -59,7 +59,7 @@ class BookForm extends React.Component {
     renderNormal(){
         let userName = '';
         this.props.usersList.forEach(user => {
-            if(user.id === this.props.userId){
+            if(user.id == this.props.userId){
                 userName = user.name + " " + user.lastName;
             }
         });
@@ -93,7 +93,7 @@ class BookForm extends React.Component {
     renderForm(){
         let userName = '';
         this.props.usersList.forEach(user => {
-            if(user.id === this.props.userId){
+            if(user.id == this.props.userId){
                 userName = user.name + " " + user.lastName;
             }
         });

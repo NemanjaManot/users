@@ -10,6 +10,7 @@ export class Home extends React.Component {
         super();
         this.state = {
             users: [],
+            books: [],
             searchValue: '',
             searchType: 'name',
             activeSort: {
@@ -33,6 +34,12 @@ export class Home extends React.Component {
         UserService.getAllUsers().then(response => {
             this.setState({
                 users: response.data
+            });
+        });
+
+        BookService.getAllBooks().then(response => {
+            this.setState({
+                books: response.data
             });
         });
     }
@@ -61,14 +68,20 @@ export class Home extends React.Component {
 
     /* REMOVE */
     removeUser(id){
-        let newState = this.state.users.filter((index) => {
-            return index.id !==id;
-        });
-        UserService.deleteUser(id);
-        /* updateovan state posle remove-a korisnika */
-        this.setState({
-            users: newState
-        });
+        let message = confirm("If you delete user, you also delete user book(s)!");
+        if (message == true) {
+            let newStateUser = this.state.users.filter((index) => {
+                return index.id !=id;
+            });
+
+
+            BookService.deleteBook(id);
+            UserService.deleteUser(id);
+            /* updateovan state posle remove-a korisnika */
+            this.setState({
+                users: newStateUser
+            });
+        }
     }
 
     updateUser(updatedData){
