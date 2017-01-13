@@ -6,6 +6,8 @@ import { Root } from "./components/Root";
 import { Home } from "./Pages/Home";
 import { Books } from "./Pages/Books";
 
+import css from "!style-loader!css-loader!sass-loader!./css/style.scss";
+
 class App extends React.Component {
 
     render() {
