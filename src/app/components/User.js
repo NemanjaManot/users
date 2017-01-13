@@ -1,5 +1,6 @@
 import React from "react";
 import UserService from './UserService';
+import BookService from './BookService';
 
 class User extends React.Component {
 
@@ -7,7 +8,8 @@ class User extends React.Component {
          super();
 
          this.state = {
-             editing: false
+             editing: false,
+             books: []
          };
      }
 
@@ -16,6 +18,12 @@ class User extends React.Component {
              newName: this.props.name,
              newLastName: this.props.lastName,
              newAge: this.props.age
+         });
+
+         BookService.getAllBooks().then(response => {
+             this.setState({
+                 books: response.data
+             });
          });
      }
 
@@ -54,10 +62,20 @@ class User extends React.Component {
          return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase();
      }
 
+     countBooks(){
+         let fil = this.state.books.filter((book) => {
+             return book.userId == this.props.id;
+         });
+
+         console.log(fil.length);
+     }
+
      /* Render normal */
      renderNormal(){
 
-         let numberOfBooks = 1;
+         let numberOfBooks = this.state.books.filter((book) => {
+             return book.userId == this.props.id;
+         }).length;
 
          return (
              <tr>
@@ -67,7 +85,8 @@ class User extends React.Component {
                  <td>{this.props.age}</td>
                  <td>
                      <button
-                         onClick={this.editUsers.bind(this)}
+                         //onClick={this.editUsers.bind(this)}
+                         onClick={this.countBooks.bind(this)}
                          className="btn btn-primary btn-xs"
                      >
                          EDIT
