@@ -7,12 +7,12 @@ export class Root extends React.Component {
         return (
             <div className="container">
                 <div className="row">
-                    <div className="col-xs-10 col-xs-offset-1">
+                    <div className="col-lg-12">
                         <Header/>
                     </div>
                 </div>
                 <div className="row">
-                    <div className="col-xs-10 col-xs-offset-1">
+                    <div className="col-lg-12">
                         {this.props.children}
                     </div>
                 </div>

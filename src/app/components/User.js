@@ -58,35 +58,28 @@ class User extends React.Component {
      }
 
      /* Capitalize first letter */
-     capitalize(string) {
-         return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase();
+     capitalize(str) {
+         return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
      }
 
-     countBooks(){
-         let fil = this.state.books.filter((book) => {
-             return book.userId == this.props.id;
-         });
 
-         console.log(fil.length);
-     }
+    numberOfBooks(){
+        return this.state.books.filter((book) => {
+            return book.userId == this.props.id;
+        }).length;
+    }
 
-     /* Render normal */
+    /* Render normal */
      renderNormal(){
-
-         let numberOfBooks = this.state.books.filter((book) => {
-             return book.userId == this.props.id;
-         }).length;
-
          return (
              <tr>
                  <td>{this.props.name}</td>
                  <td>{this.props.lastName}</td>
-                 <td>{numberOfBooks}</td>
+                 <td>{this.numberOfBooks()}</td>
                  <td>{this.props.age}</td>
                  <td>
                      <button
-                         //onClick={this.editUsers.bind(this)}
-                         onClick={this.countBooks.bind(this)}
+                         onClick={this.editUsers.bind(this)}
                          className="btn btn-primary btn-xs"
                      >
                          EDIT
@@ -125,15 +118,7 @@ class User extends React.Component {
                          onChange={this.onChangeInput.bind(this, 'newLastName')}
                      />
                  </td>
-                 <td>
-                     <input
-                         className="input xs"
-                         type="text"
-                         id="inputNumberBook"
-                         defaultValue={this.props.numberBook}
-                         onChange={this.onChangeInput.bind(this, 'newLastName')}
-                     />
-                 </td>
+                 <td>{this.numberOfBooks()}</td>
                  <td>
                      <input
                          className="input xs"

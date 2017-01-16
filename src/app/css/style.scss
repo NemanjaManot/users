@@ -1,13 +1,23 @@
-/* Test SCSS */
+/* Test ... */
 
-ul {
-    li {
-        .testiramo {
-            color: red;
-            background-color: orange;
-            padding: 20px;
+/* Home page */
+
+.homePage{
+    .description{
+        margin: 2% 0 6% 0;
+        h4 {
+           text-transform: uppercase;
         }
     }
 }
 
+
+
+/* Whole website */
+h4 {
+    text-decoration: underline;
+}
+p {
+    font-size: 15px;
+}
 

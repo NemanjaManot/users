@@ -4,6 +4,8 @@ var path = require('path');
 var DIST_DIR = path.resolve(__dirname, 'dist');
 var SRC_DIR = path.resolve(__dirname, 'src');
 
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
+
 var config = {
     entry: SRC_DIR + '/app/index.js',
     output: {
@@ -14,6 +16,10 @@ var config = {
     module: {
         loaders: [
             {
+                test: /\.scss$/,
+                loader: ExtractTextPlugin.extract('css-loader!sass-loader')
+            },
+            {
                 test: /\.js?/,
                 include: SRC_DIR,
                 loader: 'babel-loader',
@@ -23,6 +29,9 @@ var config = {
             }
         ]
     },
+    plugins: [
+        new ExtractTextPlugin('bundle.css', {allChunks: true})
+    ],
     devtool: 'inline-source-map'
 };
 

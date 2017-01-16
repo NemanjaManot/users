@@ -8,8 +8,7 @@ export const Header = (props) => {
     return (
         <nav className="navbar-default">
             <ul className="nav nav-pills">
-                <li className="navbar-brand"> LIST OF USERS </li>
-                <li> <a href="#" className="testiramo"> Test </a> </li>
+                <li className="navbar-brand"> Writers and books </li>
                 <div className="pull-right nav nav-pills">
 
                     <li role="presentation">

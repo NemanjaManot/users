@@ -25,8 +25,8 @@ export class Home extends React.Component {
     }
 
     /* Capitalize first letter */
-    capitalize(string) {
-        return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase();
+    capitalize(str) {
+        return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
     }
 
     /*  */
@@ -97,7 +97,6 @@ export class Home extends React.Component {
             }
         });
     }
-
 
 
     /* Sorting */
@@ -188,10 +187,19 @@ export class Home extends React.Component {
         };
 
         return (
-            <div>
-                <h4> Add new user: </h4> <br/>
+            <div className="homePage col-lg-10 col-lg-offset-1 col-sm-12">
+                <div className="form-horizontal ">
 
-                <div className="form-horizontal">
+                    <div className="description">
+                        <h4>Description</h4>
+                        <p>
+                            This web application is used for adding a writer in list of users/writers,
+                            where you can editing existing writer, remove him or adding books for specific writer. <br/>
+                            Also, you can sort writers and books or searching them by typing the first few letter.
+                        </p>
+                    </div>
+
+                    <h4> Add new writer: </h4> <br/>
                     <div className="form-group">
                         <label htmlFor="inputName" className="col-sm-2 control-label">First name</label>
                         <div className="col-sm-10">
