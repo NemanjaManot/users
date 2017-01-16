@@ -1,0 +1,60 @@
+/*  ------- Linear Gradient -------  */
+@mixin background-linear-gradient($var...) {
+  background: -webkit-linear-gradient($var);
+  background: -o-linear-gradient($var);
+  background: -moz-linear-gradient($var);
+  background: linear-gradient($var);
+}
+
+
+/*  --- Border radius --- */
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+  -moz-border-radius: $radius;
+  border-radius: $radius;
+}
+
+@mixin border-top-left-radius($var){
+  -moz-border-top-left-radius: $var;
+  -webkit-border-top-left-radius: $var;
+  -o-border-top-left-radius: $var;
+  border-top-left-radius: $var;
+}
+
+@mixin border-top-right-radius($var){
+  -moz-border-top-right-radius: $var;
+  -webkit-border-top-right-radius: $var;
+  -o-border-top-right-radius: $var;
+  border-top-right-radius: $var;
+}
+
+@mixin border-bottom-left-radius($var){
+  -moz-border-bottom-left-radius: $var;
+  -webkit-border-bottom-left-radius: $var;
+  -o-border-bottom-left-radius: $var;
+  border-bottom-left-radius: $var;
+}
+
+@mixin border-bottom-right-radius($var){
+  -moz-border-bottom-right-radius: $var;
+  -webkit-border-bottom-right-radius: $var;
+  -o-border-bottom-right-radius: $var;
+  border-bottom-right-radius: $var;
+}
+
+
+/* --- Text shadow --- */
+@mixin text-shadow($var...){
+  -webkit-text-shadow: $var;
+  -moz-text-shadow: $var;
+  text-shadow: $var;
+}
+
+
+/* --- Box shadow --- */
+@mixin box-shadow($var...) {
+  -webkit-box-shadow: $var;
+  -moz-box-shadow: $var;
+  box-shadow: $var;
+}
+

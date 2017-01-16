@@ -201,13 +201,12 @@ export class Books extends React.Component{
 
 
         return (
-            <div>
-                <h4> Books of users: </h4> <br/>
-
-                <div className="form-horizontal">
+            <div className="booksPage col-lg-10 col-lg-offset-1 col-sm-12">
+                <div className="form-horizontal col-lg-6">
+                    <h4> Books of users: </h4> <br/>
                     <div className="form-group">
-                        <label htmlFor="inputTitle" className="col-sm-2 control-label">Select User</label>
-                        <div className="col-sm-10">
+                        <label htmlFor="inputTitle" className="col-sm-3 control-label">Select User</label>
+                        <div className="col-sm-9">
                             <select
                                 className="btn btn-default"
                                 id="inputTitle"
@@ -218,8 +217,8 @@ export class Books extends React.Component{
                     </div>
 
                     <div className="form-group">
-                        <label htmlFor="inputTitle" className="col-sm-2 control-label">Title</label>
-                        <div className="col-sm-10">
+                        <label htmlFor="inputTitle" className="col-sm-3 control-label">Title</label>
+                        <div className="col-sm-9">
                             <input
                                 onChange={this.addInput.bind(this, 'newBookTitle')}
                                 type="text"
@@ -231,8 +230,8 @@ export class Books extends React.Component{
                     </div>
 
                     <div className="form-group">
-                        <label htmlFor="inputPublisher" className="col-sm-2 control-label">Publisher</label>
-                        <div className="col-sm-10">
+                        <label htmlFor="inputPublisher" className="col-sm-3 control-label">Publisher</label>
+                        <div className="col-sm-9">
                             <input
                                 onChange={this.addInput.bind(this, 'newBookPublisher')}
                                 type="text"
@@ -244,8 +243,8 @@ export class Books extends React.Component{
                     </div>
 
                     <div className="form-group">
-                        <label htmlFor="inputYear" className="col-sm-2 control-label">Year (published)</label>
-                        <div className="col-sm-10">
+                        <label htmlFor="inputYear" className="col-sm-3 control-label">Year (published)</label>
+                        <div className="col-sm-9">
                             <input
                                 onChange={this.addInput.bind(this, 'newBookYear')}
                                 type="number"
@@ -257,7 +256,7 @@ export class Books extends React.Component{
                     </div>
 
                     <div className="form-group">
-                        <div className="col-sm-offset-2 col-sm-10">
+                        <div className="col-sm-offset-3 col-sm-9">
                             <button type="submit" className="btn btn-primary" onClick={this.addNewBook}>
                                 Add
                             </button>
@@ -265,11 +264,17 @@ export class Books extends React.Component{
                     </div>
                 </div>
 
+                <div className="col-lg-6">
+
+                </div>
+
+                <div className="clearfix"></div>
+
                 <hr/>
 
                 <div>
                     <h4> Books: </h4>
-                    <table className="table table-striped">
+                    <table className="table">
                         <thead>
                             <tr>
                                 <th>
