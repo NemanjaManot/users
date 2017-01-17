@@ -2,45 +2,42 @@
 
 
 /* Table style */
+.tableStyle {
+  padding: 2% 0 1% 0;
+}
 table {
   border-collapse: separate;
   background: #fff;
   @include border-radius(5px);
   margin: 50px auto;
   @include box-shadow(0 0 5px rgba(0,0,0,0.3));
-}
 
-thead {
-  @include border-radius(5px);
-}
+  thead {
+    @include border-radius(5px);
 
-thead th {
-  font-family: 'Patua One', cursive;
-  font-size: 16px;
-  font-weight: 400;
-  color: #fff;
-  @include text-shadow(1px 2px 0 rgba(0,0,0,0.5));
-  text-align: left;
-  padding: 20px;
-  @include background-linear-gradient(#646f7f, #4a5564);
-  border-top: 1px solid #858d99;
+    th {
+      font-family: 'Patua One', cursive;
+      font-size: 16px;
+      font-weight: 400;
+      color: #fff;
+      @include text-shadow(1px 2px 0 rgba(0,0,0,0.5));
+      padding: 20px;
+      @include background-linear-gradient(#646f7f, #4a5564);
 
-  &:first-child {
-    @include border-top-left-radius(5px);
-  }
-
-  &:last-child {
-    @include border-top-right-radius(5px);
+      &:first-child {
+        @include border-top-left-radius(5px);
+      }
+      &:last-child {
+        @include border-top-right-radius(5px);
+      }
+    }
   }
 }
 
 tbody tr td {
-  font-weight:400;
   color:#5f6062;
   font-size:13px;
-  padding:20px 20px 20px 20px;
-  border-bottom:1px solid #e0e0e0;
-
+  padding: 20px;
 }
 
 tbody tr:nth-child(2n) {
@@ -48,7 +45,6 @@ tbody tr:nth-child(2n) {
 }
 
 tbody tr:last-child td {
-  border-bottom:none;
   &:first-child {
     @include border-bottom-left-radius(5px);
   }

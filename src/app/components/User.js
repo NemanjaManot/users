@@ -80,14 +80,14 @@ class User extends React.Component {
                  <td>
                      <button
                          onClick={this.editUsers.bind(this)}
-                         className="btn btn-primary btn-xs"
+                         className="btn mainButton btn-xs"
                      >
                          EDIT
                      </button>
                  </td>
                  <td>
                      <button
-                         className="btn btn-danger btn-xs "
+                         className="btn removeBtn btn-xs "
                          onClick={this.props.removeUser.bind(this, this.props.id)}
                      >
                          X

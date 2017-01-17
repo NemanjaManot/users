@@ -4,6 +4,8 @@ import BookForm from '../components/BookForm';
 import BookService from '../components/BookService';
 import UserService from '../components/UserService';
 
+import {Link} from "react-router"
+
 
 
 export class Books extends React.Component{
@@ -173,11 +175,6 @@ export class Books extends React.Component{
 
 
     render(){
-        /* CSS */
-        const buttonSort = {
-            marginLeft: 8
-        };
-
         /* Select user - Users from user-page */
         const options = this.state.users.map((user, index) => {
             return (<option key={index} value={user.id}> {user.name + ' ' + user.lastName} </option>);
@@ -202,6 +199,18 @@ export class Books extends React.Component{
 
         return (
             <div className="booksPage col-lg-10 col-lg-offset-1 col-sm-12">
+
+                <div className="col-lg-6">
+                    <div className="description">
+                        <h4>Description</h4>
+                        <p>
+                            In this page you can choose a writer which you added on Home page, then you can fill the inputs
+                            with information about book of writer - title, publisher and year of published. <br/> <br/>
+                            Also in this page you can editing and remove books for specific writer or sorting them.
+                        </p>
+                    </div>
+                </div>
+
                 <div className="form-horizontal col-lg-6">
                     <h4> Books of users: </h4> <br/>
                     <div className="form-group">
@@ -243,7 +252,7 @@ export class Books extends React.Component{
                     </div>
 
                     <div className="form-group">
-                        <label htmlFor="inputYear" className="col-sm-3 control-label">Year (published)</label>
+                        <label htmlFor="inputYear" className="col-sm-3 control-label">Published</label>
                         <div className="col-sm-9">
                             <input
                                 onChange={this.addInput.bind(this, 'newBookYear')}
@@ -257,22 +266,15 @@ export class Books extends React.Component{
 
                     <div className="form-group">
                         <div className="col-sm-offset-3 col-sm-9">
-                            <button type="submit" className="btn btn-primary" onClick={this.addNewBook}>
+                            <button type="submit" className="btn mainButton" onClick={this.addNewBook}>
                                 Add
                             </button>
                         </div>
                     </div>
                 </div>
 
-                <div className="col-lg-6">
 
-                </div>
-
-                <div className="clearfix"></div>
-
-                <hr/>
-
-                <div>
+                <div className="tableStyle">
                     <h4> Books: </h4>
                     <table className="table">
                         <thead>
@@ -280,8 +282,7 @@ export class Books extends React.Component{
                                 <th>
                                     User
                                     <button
-                                        className="btn btn-default glyphicon glyphicon-sort btn btn-default btn-xs"
-                                        style={buttonSort}
+                                        className="buttonSort glyphicon glyphicon-sort btn btn-default btn-xs"
                                         onClick={this.sortingOnlyUser.bind(this)}
                                         >
                                     </button>
@@ -289,8 +290,7 @@ export class Books extends React.Component{
                                 <th>
                                     Book
                                     <button
-                                        className="btn btn-default glyphicon glyphicon-sort btn btn-default btn-xs"
-                                        style={buttonSort}
+                                        className="buttonSort glyphicon glyphicon-sort btn btn-default btn-xs"
                                         onClick={this.sorting.bind(this, 'title')}
                                     >
                                     </button>
@@ -298,8 +298,7 @@ export class Books extends React.Component{
                                 <th>
                                     Publisher
                                     <button
-                                        className="btn btn-default glyphicon glyphicon-sort btn btn-default btn-xs"
-                                        style={buttonSort}
+                                        className="buttonSort glyphicon glyphicon-sort btn btn-default btn-xs"
                                         onClick={this.sorting.bind(this, 'publisher')}
                                     >
                                     </button>
@@ -307,8 +306,7 @@ export class Books extends React.Component{
                                 <th>
                                     Published
                                     <button
-                                        className="btn btn-default glyphicon glyphicon-sort btn btn-default btn-xs"
-                                        style={buttonSort}
+                                        className="buttonSort glyphicon glyphicon-sort btn btn-default btn-xs"
                                         onClick={this.sortByYear.bind(this)}
                                     >
                                     </button>
@@ -322,7 +320,6 @@ export class Books extends React.Component{
                             {booksList}
                         </tbody>
                     </table>
-
 
                 </div>
 

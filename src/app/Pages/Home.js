@@ -184,13 +184,15 @@ export class Home extends React.Component {
         return (
             <div className="homePage col-lg-10 col-lg-offset-1 col-sm-12">
 
-                <div className="description">
-                    <h4>Description</h4>
-                    <p>
-                        This web application is used for adding a writer in list of users/writers,
-                        where you can editing existing writer, remove him or adding books for specific writer. <br/>
-                        Also, you can sort writers and books or searching them by typing the first few letter.
-                    </p>
+                <div className="col-lg-6">
+                    <div className="description">
+                        <h4>Description</h4>
+                        <p>
+                            This web application is used for adding a writer in list of users/writers,
+                            where you can editing existing writer, remove him or adding books for specific writer. <br/> <br/>
+                            Also, you can sort writers and books or searching them by typing the first few letter.
+                        </p>
+                    </div>
                 </div>
 
                 <div className="form-horizontal col-lg-6">
@@ -233,44 +235,54 @@ export class Home extends React.Component {
                     </div>
                     <div className="form-group">
                         <div className="col-sm-offset-3 col-sm-9">
-                            <button type="submit" className="btn btn-primary" onClick={this.addNewUser}>
+                            <button type="submit" className="btn mainButton" onClick={this.addNewUser}>
                                 Add
                             </button>
                         </div>
                     </div>
                 </div>
 
-                <div className="col-lg-6">
 
-                </div>
 
                 <div className="clearfix"></div>
 
-                <hr/>
 
                 <div className="tableStyle">
-                          {/* SEARCH */}
-                    <div className="col-xs-5">
-                        <div className="form-group">
-                            <label htmlFor="selectSearch">Search by (select one):</label>
-                            <select
-                                className="buttonSort btn btn-default"
-                                id="selectSearch"
-                                onChange={this.updateSelectSearch.bind(this)}
-                            >
-                                <option value="name">Name</option>
-                                <option value="lastName">Last name</option>
-                                <option value="age">Age</option>
-                            </select>
-                        </div>
 
-                        <input
-                            type="text"
-                            id="searchInput"
-                            className="form-control"
-                            onChange={this.updateSearch.bind(this)}
-                        />
-                        <br/>
+                    <h4>List of writers</h4>
+
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                        Consequuntur, exercitationem impedit in magni quisquam repellat tenetur.
+                        Aliquam blanditiis dolore eos eveniet fugit nobis,
+                        officiis omnis qui quibusdam repellendus repudiandae ullam.
+                    </p>
+
+                    <div> {/* SEARCH */}
+                        <div className="col-lg-2 col-xs-4">
+                            <div className="form-group">
+                                <select
+                                    className="form-control"
+                                    id="selectSearch"
+                                    onChange={this.updateSelectSearch.bind(this)}
+                                >
+                                    <option value="s">Select one</option>
+                                    <option value="name">Name</option>
+                                    <option value="lastName">Last name</option>
+                                    <option value="age">Age</option>
+                                </select>
+                            </div>
+
+                            <div className="form-group">
+                                <input
+                                    type="text"
+                                    id="searchInput"
+                                    className="form-control"
+                                    placeholder="Search"
+                                    onChange={this.updateSearch.bind(this)}
+                                />
+                            </div>
+                        </div>
                     </div>
 
                     <table className="table">
@@ -279,28 +291,28 @@ export class Home extends React.Component {
                             <th>
                                 First Name
                                 <button
-                                    className="buttonSort btn btn-default glyphicon glyphicon-sort btn btn-default btn-xs"
+                                    className="buttonSort glyphicon glyphicon-sort btn btn-default btn-xs"
                                     onClick={this.sorting.bind(this, 'name')}>
                                 </button>
                             </th>
                             <th>
                                 Last Name
                                 <button
-                                    className="buttonSort btn btn-default glyphicon glyphicon-sort btn btn-default btn-xs"
+                                    className="buttonSort glyphicon glyphicon-sort btn btn-default btn-xs"
                                     onClick={this.sorting.bind(this, 'lastName')}>
                                 </button>
                             </th>
                             <th>
                                 Books
                                 <button
-                                    className="buttonSort btn btn-default glyphicon glyphicon-sort btn btn-default btn-xs"
+                                    className="buttonSort glyphicon glyphicon-sort btn btn-default btn-xs"
                                     onClick={this.sortByAge.bind(this)}>
                                 </button>
                             </th>
                             <th>
                                 Age
                                 <button
-                                    className="buttonSort btn btn-default glyphicon glyphicon-sort btn btn-default btn-xs"
+                                    className="buttonSort glyphicon glyphicon-sort btn btn-default btn-xs"
                                     onClick={this.sortByAge.bind(this)}>
                                 </button>
                             </th>

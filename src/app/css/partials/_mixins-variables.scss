@@ -58,3 +58,10 @@
   box-shadow: $var;
 }
 
+@mixin transition($var...) {
+  -webkit-transition: $var;
+  -moz-transition: $var;
+  -ms-transition: $var;
+  -o-transition: $var;
+  transition: $var;
+}

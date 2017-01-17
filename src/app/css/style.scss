@@ -1,13 +1,73 @@
 @import 'partials/table';
 @import 'partials/mixins-variables';
 
-/* Home page */
 
-.homePage{
+/* --- Whole website --- */
+
+body {
+    background-color: #ecf0f1;
+}
+h4 {
+    text-decoration: underline;
+    text-transform: uppercase;
+}
+p {
+    font-size: 15px;
+}
+.mainButton {
+    background-color: #4a5564;
+    color: #ecf0f1;
+    @include transition(background-color .2s ease-out);
+    &:hover {
+        background-color: #4a5564 * 1.2;
+        color: white;
+    }
+}
+.removeBtn{
+    color: red;
+    padding: 1px 4px;
+}
+
+/* --- Navigation menu ---*/
+.navbar {
+    @include background-linear-gradient(#646f7f, #4a5564);
+    .navbar-brand {
+        color: #ecf0f1;
+    }
+    li {
+        a {
+            margin-top: 5px;
+            color: #ecf0f1;
+            &:hover {
+                background-color: #646f7f;
+                color: #ecf0f1;
+            }
+        }
+    }
+}
+
+/* --- Input style ---*/
+input[type="text"], input[type="number"] {
+    padding: 10px;
+    border: none;
+    border-bottom: solid 2px #c9c9c9;
+    transition: border 0.3s;
+    height: 29px;
+}
+input[type="text"]:focus,
+input[type="text"].focus,
+input[type="number"]:focus,
+input[type="number"].focus {
+    border-bottom: solid 2px #969696;
+}
+
+.homePage, .booksPage{
+    padding: 2% 0;
+
+    /* --- Description --- */
     .description{
-        margin: 2% 0 6% 0;
-        h4 {
-           text-transform: uppercase;
+        p {
+            padding-top: 5%;
         }
     }
 
@@ -20,23 +80,10 @@
 }
 
 
-.test {
-    background-color: aliceblue;
+select {
+    font-size: 13px;
+    height: 29px;
+    padding: 3px;
+    width: 140px;
+    max-width: 100%;
 }
-
-
-
-
-/* Whole website */
-body {
-    background-color: #ecf0f1;
-    //background-color: #353a40;
-}
-h4 {
-    text-decoration: underline;
-}
-p {
-    font-size: 15px;
-}
-
-

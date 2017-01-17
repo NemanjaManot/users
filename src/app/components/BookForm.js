@@ -72,14 +72,14 @@ class BookForm extends React.Component {
                 <td>
                     <button
                         onClick={this.editBooks.bind(this)}
-                        className="btn btn-primary btn-xs"
+                        className="btn mainButton btn-xs"
                     >
                         EDIT
                     </button>
                 </td>
                 <td>
                     <button
-                        className="btn btn-danger btn-xs "
+                        className="btn removeBtn btn-xs "
                         onClick={this.props.removeBook.bind(this, this.props.id)}
                     >
                         X
@@ -135,7 +135,6 @@ class BookForm extends React.Component {
 
                 </td>
             </tr>
-
         );
     }
 

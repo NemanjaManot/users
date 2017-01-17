@@ -5,7 +5,7 @@ import {Header} from "./Header";
 export class Root extends React.Component {
     render(){
         return (
-            <div className="container">
+            <div className="container-fluid">
                 <div className="row">
                     <div className="col-lg-12">
                         <Header/>
