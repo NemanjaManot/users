@@ -179,7 +179,8 @@ export class Home extends React.Component {
                     updateUser={this.updateUser}
                 />
             )
-        });
+		  });
+		  console.log('test');
 
         return (
             <div className="homePage col-lg-10 col-lg-offset-1 col-sm-12">
